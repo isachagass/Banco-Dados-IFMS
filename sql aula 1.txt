@@ -1,0 +1,89 @@
+-- CREATE TABLE Endereco (
+-- 	Codigo integer,
+-- 	Rua varchar(100),
+-- 	Constraint PK_Endereco primary key (codigo)
+-- );
+
+-- CREATE TABLE Empregado (
+-- 	Codigo integer not null,
+-- 	Nome varchar(60),
+-- 	Idade integer,
+-- 	CodEndereco integer,
+-- 	Constraint PK_Empregado primary key (codigo),
+-- 	Constraint FK_EmpregadoEnderecp foreign key (codEndereco) references Endereco(Codigo)
+-- );
+-- DROP TABLE Endereco;
+-- DROP TABLE Empregado;
+
+-- ALTER TABLE Empregado
+-- DROP COLUMN Idade;
+
+-- ALTER TABLE Empregado
+-- ADD COLUMN DataNasc date;
+
+
+-- INSERT INTO Endereco (Codigo, Rua)
+-- VALUES(1, 'Rua Nova');
+
+-- INSERT INTO Empregado (Codigo, nome, Codendereco, DataNasc)
+-- VALUES(1, 'Isa', 1, '2007-07-17');
+
+-- SELECT * FROM Empregado;
+
+
+-- create table Aluno(
+-- 	RA integer,
+-- 	Nome varchar(100),
+-- 	DataNasc date,
+	
+-- 	Constraint PK_Aluno primary key (RA)
+-- );
+
+-- create table Disciplina(
+-- 	Codigo integer,
+-- 	Nome varchar(100),
+-- 	CargaHorario integer,
+	
+-- 	Constraint PK_Disciplina primary key(Codigo)
+-- );
+
+-- create table Aluno_Disciplina (
+-- 	Codigo integer,
+-- 	CodAluno integer,
+-- 	CodDisciplina integer,
+	
+-- 	Constraint PK_Aluno_Disciplina primary key (Codigo),
+-- 	Constraint FK_Aluno_Disciplina_Aluno foreign key (CodAluno) references Aluno(RA),
+-- 	Constraint FK_Aluno_Disciplina_Disciplina foreign key (CodDisciplina) references Disciplina(Codigo)
+-- );
+
+-- insert into Aluno(RA, Nome, DataNasc)
+-- values
+-- 	(110, 'Ana Carla Sella', '1990-01-31'),
+-- 	(111, 'Carla', '1990-12-31'),
+-- 	(112, 'Pietro', '1990-10-10'),
+-- 	(113, 'Janete', '1990-07-08'),
+-- 	(114, 'Julio', '1990-09-17'),
+-- 	(115, 'Fabricio', '1990-11-03'),
+-- 	(116, 'Patricio', '1990-08-11'),
+-- 	(117, 'Brian', '1991-07-17'),
+-- 	(118, 'Cássia', '1991-06-18'),
+-- 	(119, 'Claudio', '1991-06-18'),
+-- 	(120, 'Crsitina', '1990-02-20')
+
+-- insert into Disciplina(Codigo, Nome, CargaHorario)
+-- values 
+-- 	(1, 'Matematica 1', 100),
+-- 	(2, 'Portugues 1', 120),
+-- 	(3, 'Ingles 1', 60),
+-- 	(4, 'Fisica 1', 60),
+-- 	(5, 'Biologia 1', 60),
+-- 	(6, 'Geografia 1', 60),
+-- 	(7, 'Quimica 1', 40),
+-- 	(8, 'Espanhol 1', 60),
+-- 	(9, 'Historia 1', 40),
+-- 	(10, 'Matematica 2', 100),
+-- 	(11, 'Portugues 2', 100),
+-- 	(12, 'Ingles 2', 40);
+
+Select * from Disciplina;
