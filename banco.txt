@@ -1,0 +1,178 @@
+CREATE TABLE "Aluno" (
+    "RA" INT PRIMARY KEY,
+    "Nome" VARCHAR(100) NOT NULL,
+    "DataNasc" DATE NOT NULL
+);
+
+CREATE TABLE "Disciplina" (
+    "Código" INT PRIMARY KEY,
+    "Nome" VARCHAR(100) NOT NULL,
+    "Carga H." INT NOT NULL
+);
+
+CREATE TABLE "Especialidade" (
+    "Código" INT PRIMARY KEY,
+    "Nome" VARCHAR(100) NOT NULL,
+    "Humanas" INT NOT NULL -- 0 para Não, 1 para Sim
+);
+
+CREATE TABLE "Professor" (
+    "Código" INT PRIMARY KEY,
+    "Nome" VARCHAR(100) NOT NULL,
+    "Cod. Especialidade" INT NOT NULL,
+    "Data Formação" DATE NOT NULL,
+    "Salário" DECIMAL(10, 2) NOT NULL,
+    CONSTRAINT "FK_Professor_Especialidade" FOREIGN KEY ("Cod. Especialidade") REFERENCES "Especialidade"("Código")
+);
+
+CREATE TABLE "AlunoDisciplina" (
+    "Código" INT PRIMARY KEY,
+    "Cód. Aluno" INT NOT NULL,
+    "Cód. Disciplina" INT NOT NULL,
+    CONSTRAINT "FK_AlunoDisciplina_Aluno" FOREIGN KEY ("Cód. Aluno") REFERENCES "Aluno"("RA"),
+    CONSTRAINT "FK_AlunoDisciplina_Disciplina" FOREIGN KEY ("Cód. Disciplina") REFERENCES "Disciplina"("Código")
+);
+
+CREATE TABLE "Turma" (
+    "Código" INT PRIMARY KEY,
+    "Cód. Aluno" INT NOT NULL,
+    "Cód. Disciplina" INT NOT NULL,
+    "Cód. Professor" INT NOT NULL,
+    CONSTRAINT "FK_Turma_Aluno" FOREIGN KEY ("Cód. Aluno") REFERENCES "Aluno"("RA"),
+    CONSTRAINT "FK_Turma_Disciplina" FOREIGN KEY ("Cód. Disciplina") REFERENCES "Disciplina"("Código"),
+    CONSTRAINT "FK_Turma_Professor" FOREIGN KEY ("Cód. Professor") REFERENCES "Professor"("Código")
+);
+
+
+-- ==========================================
+-- INSERTS: Aluno
+-- ==========================================
+INSERT INTO "Aluno" ("RA", "Nome", "DataNasc") VALUES
+(110, 'Ana Carla Sella', '1990-01-31'),
+(111, 'Carla Rodrigues', '1990-12-31'),
+(112, 'Pietro Henrique Sá', '1991-10-10'),
+(113, 'Janete Souza Neta', '1990-07-08'),
+(114, 'Júlio César Xavier', '1991-09-17'),
+(115, 'Fabrícia Lordani', '1990-03-11'),
+(116, 'Patrício Junqueira', '1991-11-08'),
+(117, 'Brian Pereira Silva', '1991-07-17'),
+(118, 'Cássia Martins', '1991-06-18'),
+(119, 'Cláudio Martins', '1991-06-18'),
+(120, 'Cristina Sanches', '1990-02-20');
+
+-- ==========================================
+-- INSERTS: Disciplina
+-- ==========================================
+INSERT INTO "Disciplina" ("Código", "Nome", "Carga H.") VALUES
+(1, 'Matemática 1', 100),
+(2, 'Português 1', 120),
+(3, 'Inglês 1', 60),
+(4, 'Física 1', 60),
+(5, 'Biologia 1', 60),
+(6, 'Geografia 1', 60),
+(7, 'Química 1', 40),
+(8, 'Espanhol 1', 60),
+(9, 'História 1', 40),
+(10, 'Matemática 2', 100),
+(11, 'Português 2', 100),
+(12, 'Inglês 2', 40);
+
+-- ==========================================
+-- INSERTS: Especialidade
+-- ==========================================
+INSERT INTO "Especialidade" ("Código", "Nome", "Humanas") VALUES
+(1, 'Matemática', 0),
+(2, 'Português', 1),
+(3, 'História Nacional', 1),
+(4, 'História Internacional', 1),
+(5, 'Inglês Instrumental', 1),
+(6, 'Inglês Avançado', 1),
+(7, 'Física', 0),
+(8, 'Biologia Animal', 0),
+(9, 'Biologia Vegetal', 0),
+(10, 'Espanhol', 1),
+(11, 'Química', 0),
+(12, 'Geografia', 1);
+
+-- ==========================================
+-- INSERTS: Professor
+-- ==========================================
+INSERT INTO "Professor" ("Código", "Nome", "Cod. Especialidade", "Data Formação", "Salário") VALUES
+(1, 'Gilmar Santiago', 3, '2005-08-07', 1000.00),
+(2, 'Kleber Fonseca', 12, '2005-10-12', 2000.00),
+(3, 'Jeruza Maria Pereira', 9, '2006-08-07', 3000.00),
+(4, 'Thiago Santos Padilha', 11, '2008-08-15', 1000.00),
+(5, 'Michella Cristina Berner', 2, '2004-08-10', 1000.00),
+(6, 'Érica Junqueira Pereira', 5, '2010-07-05', 2000.00),
+(7, 'Angela Carreira', 3, '2003-08-05', 2000.00),
+(8, 'Elaine Clarice Correia', 1, '2003-08-05', 2000.00);
+
+-- ==========================================
+-- INSERTS: AlunoDisciplina
+-- ==========================================
+INSERT INTO "AlunoDisciplina" ("Código", "Cód. Aluno", "Cód. Disciplina") VALUES
+(1, 120, 1),
+(2, 120, 3),
+(3, 120, 10),
+(4, 120, 11),
+(5, 120, 12),
+(6, 110, 10),
+(7, 110, 11),
+(8, 110, 12),
+(9, 111, 9),
+(10, 112, 9),
+(11, 113, 9),
+(12, 113, 4),
+(13, 118, 5),
+(14, 118, 1),
+(15, 118, 2),
+(16, 118, 4),
+(17, 119, 5),
+(18, 119, 1),
+(19, 119, 2),
+(20, 119, 4),
+(21, 117, 1),
+(22, 117, 2),
+(23, 117, 3),
+(24, 117, 4),
+(25, 117, 5),
+(26, 117, 6),
+(27, 117, 7),
+(28, 117, 10),
+(29, 117, 11),
+(30, 117, 12);
+
+-- ==========================================
+-- INSERTS: Turma
+-- ==========================================
+INSERT INTO "Turma" ("Código", "Cód. Aluno", "Cód. Disciplina", "Cód. Professor") VALUES
+(1, 120, 1, 8),
+(2, 120, 3, 6),
+(3, 120, 10, 8),
+(4, 120, 11, 5),
+(5, 120, 12, 6),
+(6, 110, 10, 4),
+(7, 110, 11, 5),
+(8, 110, 12, 6),
+(9, 111, 9, 1),
+(10, 112, 9, 1),
+(11, 113, 9, 1),
+(12, 113, 4, 7),
+(13, 118, 5, 3),
+(14, 118, 1, 8),
+(15, 118, 2, 5),
+(16, 118, 4, 7),
+(17, 119, 5, 4),
+(18, 119, 1, 8),
+(19, 119, 2, 5),
+(20, 119, 4, 7),
+(21, 117, 1, 8),
+(22, 117, 2, 5),
+(23, 117, 3, 6),
+(24, 117, 4, 7),
+(25, 117, 5, 4),
+(26, 117, 6, 2),
+(27, 117, 7, 4),
+(28, 117, 10, 8),
+(29, 117, 11, 5),
+(30, 117, 12, 6);
