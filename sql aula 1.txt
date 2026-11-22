@@ -138,3 +138,60 @@ Select * from Disciplina;
 -- select avg(salario)
 -- from professor
 -- avg: calcula media
+
+-- 7.
+-- select 
+-- 	avg(p."Salário")
+-- from "Professor" as p
+-- inner join "Especialidade" e
+-- 	on p."Cod. Especialidade" = e."Código"
+-- WHERE e."Humanas" = 1;
+
+-- SELECT 
+--     e."Humanas", 
+--     AVG(p."Salário") AS "Média Salarial"
+-- FROM "Professor" p
+-- INNER JOIN "Especialidade" e 
+--     ON p."Cod. Especialidade" = e."Código"
+-- GROUP BY e."Humanas";
+-- group by : traz os dois resultados - 0/1
+
+-- 8.
+-- select count(*) as "Qauntidade de registros"
+-- from "Especialidade";
+-- count: conta a quantidade de linhas existentes em uma table
+-- as: deixa um nome amigavel no console
+
+-- 9.
+-- select sum("Salário")
+-- from "Professor";
+-- sum: soma total de uma coluna
+-- avg: media
+
+-- 10.
+-- select "Nome", "Salário"
+-- from "Professor"
+-- where "Cod. Especialidade" = 1;
+
+-- 11.
+-- select distinct 
+-- 	p."Nome"
+-- from "Professor" p
+-- inner join "Turma" as t
+-- 	on p."Código" = t."Cód. Professor"
+-- where t."Cód. Disciplina" = 1
+-- or t."Cód. Disciplina" = 10;
+-- distinct: não repete o nome dos professores
+
+-- 12.
+-- select distinct 
+-- 	p."Nome"
+-- from "Professor" p
+-- inner join "Turma" t
+-- 	on p."Código" = t."Cód. Professor"
+-- inner join "Disciplina" d
+-- 	on d."Código" = t."Cód. Disciplina"
+-- where d."Nome" = 'História 1';
+
+-- juntar 2 inner join para pesquisar com o nome da disciplina e nao o id
+
